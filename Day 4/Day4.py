@@ -19,7 +19,7 @@ def find_xmas(array):
     return xmas_count
 
 def find_next_letter(row, col, i, j, array): #performs edge checking
-    if row + i not in range(array) or col + j not in range(array[0]):
+    if row + i not in range(len(array)) or col + j not in range(len(array[0])):
         return None
     return array[row + i][col + j]
 
