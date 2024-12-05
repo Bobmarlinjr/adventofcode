@@ -19,13 +19,9 @@ def find_xmas(array):
     return xmas_count
 
 def find_next_letter(row, col, i, j, array): #performs edge checking
-    try:
-        next_letter = array[row + i][col + j]
-        if row + i < 0 or col + j < 0:
-            return None
-        return next_letter
-    except:
+    if row + i not in range(array) or col + j not in range(array[0]):
         return None
+    return array[row + i][col + j]
 
 def complete_word(row, col, array, ltrs_left=["M", "A", "S"], curr_dir=None):
     count = 0

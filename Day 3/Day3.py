@@ -7,15 +7,16 @@ Day3_input = Day3_file.read()
 ################################
 
 # Find all parts of the string starting in 'mul(' , then test for remaining criterion.
-substring = "mul("
-mul_instances = []
-start = 0
-while True:
-    start = Day3_input.find(substring, start)
-    if start == -1:
-        break
-    mul_instances.append(start + 4) # index on first digit
-    start += 1
+def find_substring_instances(substring, offset=0):
+    instances = []
+    start = 0
+    while True:
+        start = Day3_input.find(substring, start)
+        if start == -1:
+            break
+        instances.append(start + 4) # index on first digit
+        start += 1
+    return instances
 
 def digit_check(index): #checks to see if at specific index, if there is a block of 1-3 digits. If true, returns new index of first non-digit.
     digit_counter = 0
@@ -52,31 +53,15 @@ def check_mul(instances):
         products_list.append(first_number * second_number)
     return products_list
 
+mul_instances = find_substring_instances("mul(", offset=4)
 print(f"Sum of products: {sum(check_mul(mul_instances))}")
 
 ################################
 ###--------- PART 2 ---------###
 ################################
 
-substring = "don't()"
-dont_instances = []
-start = 0
-while True:
-    start = Day3_input.find(substring, start)
-    if start == -1:
-        break
-    dont_instances.append(start + 4)
-    start += 1
-
-substring = "do()"
-do_instances = []
-start = 0
-while True:
-    start = Day3_input.find(substring, start)
-    if start == -1:
-        break
-    do_instances.append(start + 4)
-    start += 1
+dont_instances = find_substring_instances("don't()")
+do_instances = find_substring_instances("do()")
 
 dont_do_pairs = [[dont_instances[0], do_instances[0]]]
 dont_counter = 1
