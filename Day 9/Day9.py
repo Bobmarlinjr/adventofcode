@@ -1,5 +1,4 @@
 from pathlib import Path
-from itertools import batched
 Day9_input = open(Path(__file__).parent / "Day9_input.txt").read()
 
 ################################
