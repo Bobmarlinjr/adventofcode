@@ -71,6 +71,13 @@ print(f"Price of all fenced regions: {price}")
 #   to the corner are open,    no corner exists.      corner also exists.
 #   corner exists.
 
+
+# EDGE CASE: if diagonal is occupied but neither of the component vectors are,
+# then each cell has a corner counted for that diagonal direction. 
+#   
+#   X[]
+#  []X
+
 def calculate_edges(regions):
     d = {}
     for reg_id, coords in regions.items():
